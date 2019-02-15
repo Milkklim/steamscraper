@@ -1,0 +1,23 @@
+{
+  "name": "h",
+  "version": "1.0.0",
+  "description": "fff",
+  "main": "index.js",
+  "dependencies": {
+    "assert-plus": "^1.0.0",
+    "asynckit": "^0.4.0",
+    "cheerio": "^1.0.0-rc.2",
+    "combined-stream": "^1.0.7",
+    "core-util-is": "^1.0.2",
+    "dashdash": "^1.14.1",
+    "delayed-stream": "^1.0.0",
+    "extsprintf": "^1.3.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "zabey"
+  },
+  "author": "",
+  "license": "ISC"
+}
