@@ -24,22 +24,39 @@ request(URL, function (err, res, body) {
         itemArr.push(itemObj);
         //console.log(itemArr);
         };
-    itemVArr = [];
+    function CallCSGOFloat(m_id,a_id,d_id, callback) {
+        request('https://api.csgofloat.com/?m='+m_id+'&a='+a_id+'&d='+d_id, function (error, response, body) {
+            var obj =JSON.parse(response.body);
+            var itemV = {
+                id: m_id,
+                float: obj.iteminfo.floatvalue
+            };
+            callback(itemV);
+        });
+    };
+    var myArray = [];
+    for (var n = 0; n < 10; n++) {
+        CallCSGOFloat(itemArr[n].m_id,itemArr[n].a_id,itemArr[n].d_id, function(item) {
+            myArray.push(item);
+        });    
+    };
+
+ //    itemVArr = [];
     //for (var l = 0;l<itemArr.length; l++){
-       request('https://api.csgofloat.com/?m='+itemArr[0].m_id+'&a='+itemArr[0].a_id+'&d='+itemArr[0].d_id, function (error, response, body) {
-       var obj = JSON.parse(response.body);
-       var itemV = {id: itemArr[0].m_id, float: obj.iteminfo.floatvalue};
-       itemVArr.push(itemV);
-       console.log(itemVArr);
-       console.log(obj.iteminfo.floatvalue);
-    });
-    request('https://api.csgofloat.com/?m='+itemArr[1].m_id+'&a='+itemArr[1].a_id+'&d='+itemArr[1].d_id, function (error, response, body) {
-       var obj = JSON.parse(response.body);
-       var itemV = {id: itemArr[1].m_id, float: obj.iteminfo.floatvalue};
-       itemVArr.push(itemV);
-       console.log(itemVArr);
-       console.log(obj.iteminfo.floatvalue);
-    });
+ //       request('https://api.csgofloat.com/?m='+itemArr[0].m_id+'&a='+itemArr[0].a_id+'&d='+itemArr[0].d_id, function (error, response, body) {
+ //       var obj = JSON.parse(response.body);
+ //       var itemV = {id: itemArr[0].m_id, float: obj.iteminfo.floatvalue};
+ //       itemVArr.push(itemV);
+ //       console.log(itemVArr);
+ //       console.log(obj.iteminfo.floatvalue);
+ //    });
+ //    request('https://api.csgofloat.com/?m='+itemArr[1].m_id+'&a='+itemArr[1].a_id+'&d='+itemArr[1].d_id, function (error, response, body) {
+ //       var obj = JSON.parse(response.body);
+ //       var itemV = {id: itemArr[1].m_id, float: obj.iteminfo.floatvalue};
+ //       itemVArr.push(itemV);
+ //       console.log(itemVArr);
+ //       console.log(obj.iteminfo.floatvalue);
+ //    });
     //};
  });
 //request('https://api.csgofloat.com/?m=2738655763868965887&a=15509394941&d=3353011975288701571', function (error, response, body) {
