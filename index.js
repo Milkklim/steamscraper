@@ -22,16 +22,16 @@ request(URL, function (err, res, body) {
         .replace("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D", "");
         var itemObj = {m_id: m_id, a_id: a_id, d_id: d_id};
         itemArr.push(itemObj);
-        console.log(itemArr);
+        //console.log(itemArr);
         };
     itemVArr = [];
     for (var l = 0;l<itemArr.length; l++){
-    request('https://api.csgofloat.com/?m='+itemArr[l].m_id+'&a='+itemArr[l].a_id+'&d='+itemArr[l].d_id, function (error, response, body) {
-    var obj = JSON.parse(response.body);
-    var itemV = {id: itemArr[l].m_id, float: obj.iteminfo.floatvalue};
-    itemVArr.push(itemV);
-    console.log(itemVArr);
-    console.log(obj.iteminfo.floatvalue);
+       request('https://api.csgofloat.com/?m='+itemArr[l].m_id+'&a='+itemArr[l].a_id+'&d='+itemArr[l].d_id, function (error, response, body) {
+       var obj = JSON.parse(response.body);
+       var itemV = {id: itemArr[l].m_id, float: obj.iteminfo.floatvalue};
+       itemVArr.push(itemV);
+       console.log(itemVArr);
+       console.log(obj.iteminfo.floatvalue);
     });
     };
  });
