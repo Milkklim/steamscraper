@@ -25,15 +25,22 @@ request(URL, function (err, res, body) {
         //console.log(itemArr);
         };
     itemVArr = [];
-    for (var l = 0;l<itemArr.length; l++){
-       request('https://api.csgofloat.com/?m='+itemArr[l].m_id+'&a='+itemArr[l].a_id+'&d='+itemArr[l].d_id, function (error, response, body) {
+    //for (var l = 0;l<itemArr.length; l++){
+       request('https://api.csgofloat.com/?m='+itemArr[0].m_id+'&a='+itemArr[0].a_id+'&d='+itemArr[0].d_id, function (error, response, body) {
        var obj = JSON.parse(response.body);
-       var itemV = {id: itemArr[l].m_id, float: obj.iteminfo.floatvalue};
+       var itemV = {id: itemArr[0].m_id, float: obj.iteminfo.floatvalue};
        itemVArr.push(itemV);
        console.log(itemVArr);
        console.log(obj.iteminfo.floatvalue);
     });
-    };
+    request('https://api.csgofloat.com/?m='+itemArr[1].m_id+'&a='+itemArr[1].a_id+'&d='+itemArr[1].d_id, function (error, response, body) {
+       var obj = JSON.parse(response.body);
+       var itemV = {id: itemArr[1].m_id, float: obj.iteminfo.floatvalue};
+       itemVArr.push(itemV);
+       console.log(itemVArr);
+       console.log(obj.iteminfo.floatvalue);
+    });
+    //};
  });
 //request('https://api.csgofloat.com/?m=2738655763868965887&a=15509394941&d=3353011975288701571', function (error, response, body) {
 //var $ = cheerio.load(response.body);
