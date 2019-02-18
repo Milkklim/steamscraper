@@ -40,6 +40,9 @@ request(URL, function (err, res, body) {
             myArray.push(item);
         });    
     };
+    function hz(someurl,callback){
+        someurl 
+    }
 
  //    itemVArr = [];
     //for (var l = 0;l<itemArr.length; l++){
